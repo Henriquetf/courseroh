@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "path": "../classroom"
+    },
+    {
+      "path": "../purchase"
+    },
+    {
+      "path": "../web"
+    }
+  ],
+  "settings": {
+    "[typescript]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      }
+    }
+  }
+}
