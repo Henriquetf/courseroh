@@ -14,7 +14,7 @@ import { DotEnvProvider } from '../../core/dotenvProvider';
 import { GqlExecutionContext } from '@nestjs/graphql';
 
 @Injectable()
-export class AuthorizationGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(private dotEnvProvider: DotEnvProvider) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
