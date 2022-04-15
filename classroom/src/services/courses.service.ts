@@ -6,6 +6,10 @@ interface CreateCourseParams {
   title: string;
 }
 
+interface CreateCourseWithSlugParams extends CreateCourseParams {
+  slug: string;
+}
+
 @Injectable()
 export class CoursesService {
   constructor(private prisma: PrismaService) {}
@@ -14,6 +18,14 @@ export class CoursesService {
     return this.prisma.course.findUnique({
       where: {
         id,
+      },
+    });
+  }
+
+  findCourseBySlug(slug: string) {
+    return this.prisma.course.findUnique({
+      where: {
+        slug,
       },
     });
   }
@@ -35,6 +47,10 @@ export class CoursesService {
       throw new Error('Another course with same slug already exists.');
     }
 
+    return await this.createCourseWithSlug({ title, slug });
+  }
+
+  async createCourseWithSlug({ title, slug }: CreateCourseWithSlugParams) {
     const course = await this.prisma.course.create({
       data: {
         title,
